@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Math Board</title>
+    <link rel="stylesheet" href="reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Math Board</h1>
+      <p>Choose your number + learn your math tables</p>
+    </header>
+
+    <section>
+      <div class="input-container">
+        <input type="number" class="user" placeholder="Enter number">
+      </div>
+    </secion>
+
+    <section class="primary-buttons">
+      <button type="button" class="number">Next Step ></button>
+      <button type="button" class="reset-button">Reset Table x</button>
+    </section>
+
+    <section>
+      <h2 class="directions"></h2>
+    </section>
+
+    <section id="operators">
+      <button type="button" class="add" value="add">Add</button>
+      <button type="button" class="subtract" value="subtract">Subtract</button>
+      <button type="button" class="multiply" value="multiply">Multiply</button>
+      <button type="button" class="divide" value="divide">Divide</button>
+    </section>
+
+    <section>
+      <div id="whiteboard">
+
+      </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="scripts.js"></script>
+  </body>
+</html>
