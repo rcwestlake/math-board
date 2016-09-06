@@ -69,6 +69,7 @@ function showButtons() {
   $('.multiply').show();
   $('.divide').show();
   $('.reset-button').show();
+  $('.directions').show();
 }
 
 function showContent() {
