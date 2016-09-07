@@ -139,3 +139,11 @@ input:focus {
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.answer {
+  border: 1px solid #000;
+}
+
+.answer p {
+  padding: 5px;
+}

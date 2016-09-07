@@ -24,6 +24,7 @@ $('.add').on('click', function() {
   resetSelectedButtonColor($('.subtract'));
   resetSelectedButtonColor($('.multiply'));
   resetSelectedButtonColor($('.divide'));
+
 });
 
 $('.subtract').on('click', function(){
@@ -100,40 +101,66 @@ function convertToInt(num) {
 
 function showAnswers() {
   $('#whiteboard').html('<ul>' + answers + '</ul>');
+  i = 0;
 }
 
 function add() {
   number = convertToInt($('.user').val());
   while (i < 101) {
-    answers +=  i + " + " + number + " = " + (i + number) + '<br />';
+    template(i, number, '+');
     i++;
   }
+  i = 0;
   showAnswers();
 }
 
 function subtract() {
   number = convertToInt($('.user').val());
   while (i < 101) {
-    answers += i + ' - ' + number + ' = ' + (i - number) + '<br>';
+    template(i, number, '-');
     i++;
   }
+  i = 0;
   showAnswers();
 }
 
 function multiply() {
   number = convertToInt($('.user').val());
   while (i < 101) {
-    answers += i + ' x ' + number + ' = ' + (i * number) + ' <br>';
+    template(i, number, 'x');
     i++;
   }
+  i = 0;
   showAnswers();
 }
 
 function divide() {
   number = convertToInt($('.user').val());
   while (i < 101) {
-    answers += i + ' / ' + number + ' = ' + (i / number) + ' <br>';
+    template(i, number, '/');
     i++;
   }
+  i = 0;
   showAnswers();
+}
+
+function template(i, number, opString) {
+  var string = '<div class="answer">' + '<p>' + i + opString + number + " = " + doOperation(i, number, opString) + '</p>' + '</div>';
+
+  answers += string;
+}
+
+function doOperation(i, number, opString) {
+  switch (opString) {
+    case '+' :
+      return i + number;
+    case '-' :
+      return i - number;
+    case '/' :
+      return i / number;
+    case 'x' :
+      return i * number;
+    default:
+
+  }
 }
