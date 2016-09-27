@@ -7,7 +7,7 @@ hideButtons();
 
 $('.next-step-button').on('click', function() {
   console.log($('.user').val());
-  $('.directions').html('Now choose a math operator and watch the magic happen.');
+  $('.directions').html('Choose a math operator and watch the magic happen.');
   showButtons();
   return $('.user').val();
 });
@@ -163,7 +163,10 @@ function doOperation(i, number, opString) {
     case '-' :
       return i - number;
     case '/' :
-      return i / number;
+      var divNum = i / number;
+      divNum = +divNum.toFixed(2);
+      return divNum;
+      // return i / number;
     case 'x' :
       return i * number;
     default:

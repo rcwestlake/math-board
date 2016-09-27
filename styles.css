@@ -141,6 +141,7 @@ input:focus {
 }
 
 .answer {
+  border: 0.5px solid #333333;
   font-size: 18px;
   height: 25px;
   width: 110px;
