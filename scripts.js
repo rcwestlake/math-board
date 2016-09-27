@@ -1,12 +1,11 @@
 var number = 0;
-var operator = 'add';
 var answers = '';
 var i = 1;
 
 hideButtons();
 
 
-$('.number').on('click', function() {
+$('.next-step-button').on('click', function() {
   console.log($('.user').val());
   $('.directions').html('Now choose a math operator and watch the magic happen.');
   showButtons();
@@ -16,7 +15,6 @@ $('.number').on('click', function() {
 $('.reset-button').on('click', function(){
   resetTable();
 });
-
 
 $('.add').on('click', function() {
   add();
@@ -100,8 +98,12 @@ function convertToInt(num) {
 }
 
 function showAnswers() {
-  $('#whiteboard').html('<ul>' + answers + '</ul>');
+  $('#whiteboard').html(answers);
   i = 0;
+}
+
+function clearAnswersVariable() {
+  answers = '';
 }
 
 function add() {
@@ -112,6 +114,7 @@ function add() {
   }
   i = 0;
   showAnswers();
+clearAnswersVariable();
 }
 
 function subtract() {
@@ -122,6 +125,7 @@ function subtract() {
   }
   i = 0;
   showAnswers();
+  clearAnswersVariable();
 }
 
 function multiply() {
@@ -132,6 +136,7 @@ function multiply() {
   }
   i = 0;
   showAnswers();
+  clearAnswersVariable();
 }
 
 function divide() {
@@ -142,10 +147,11 @@ function divide() {
   }
   i = 0;
   showAnswers();
+  clearAnswersVariable();
 }
 
-function template(i, number, opString) {
-  var string = '<div class="answer">' + '<p>' + i + opString + number + " = " + doOperation(i, number, opString) + '</p>' + '</div>';
+function template( i, number, opString) {
+  var string = '<div class="answer">' + '<p>' + i + " " + opString + " "+ number + " = " + doOperation(i, number, opString) + '</p>' + '</div>';
 
   answers += string;
 }
