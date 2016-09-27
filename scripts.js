@@ -166,7 +166,6 @@ function doOperation(i, number, opString) {
       var divNum = i / number;
       divNum = +divNum.toFixed(2);
       return divNum;
-      // return i / number;
     case 'x' :
       return i * number;
     default:
