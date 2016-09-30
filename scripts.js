@@ -2,9 +2,8 @@ var number = 0;
 var answers = '';
 var i = 1;
 
-$document.ready(function(){
+$(document).ready(function(){
   hideButtons();
-
 });
 
 
