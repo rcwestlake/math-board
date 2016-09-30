@@ -1,14 +1,15 @@
 var number = 0;
-var operator = 'add';
 var answers = '';
 var i = 1;
 
-hideButtons();
+$(document).ready(function(){
+  hideButtons();
+});
 
 
-$('.number').on('click', function() {
+$('.next-step-button').on('click', function() {
   console.log($('.user').val());
-  $('.directions').html('Now choose a math operator and watch the magic happen.');
+  $('.directions').html('Choose a math operator and watch the magic happen.');
   showButtons();
   return $('.user').val();
 });
@@ -17,38 +18,34 @@ $('.reset-button').on('click', function(){
   resetTable();
 });
 
-
 $('.add').on('click', function() {
   add();
   changedSelectedButtonColor($('.add'));
-  resetSelectedButtonColor($('.subtract'));
-  resetSelectedButtonColor($('.multiply'));
-  resetSelectedButtonColor($('.divide'));
+  resetSelectedButtonColor($('.subtract', '.multiply', '.divide'));
+
 });
 
 $('.subtract').on('click', function(){
   subtract();
   changedSelectedButtonColor($('.subtract'));
-  resetSelectedButtonColor($('.add'));
-  resetSelectedButtonColor($('.multiply'));
-  resetSelectedButtonColor($('.divide'));
+  resetSelectedButtonColor($('.add', '.multiple', '.divide'));
 });
 
 $('.multiply').on('click', function(){
   multiply();
   changedSelectedButtonColor($('.multiply'));
-  resetSelectedButtonColor($('.subtract'));
-  resetSelectedButtonColor($('.add'));
-  resetSelectedButtonColor($('.divide'));
+  resetSelectedButtonColor($('.subtract', '.add', '.divide'));
 });
 
 $('.divide').on('click', function(){
   divide();
   changedSelectedButtonColor($('.divide'));
-  resetSelectedButtonColor($('.subtract'));
-  resetSelectedButtonColor($('.multiply'));
-  resetSelectedButtonColor($('.add'));
+  resetSelectedButtonColor($('.subtract', '.multiply', '.add'));
 });
+
+
+/*Create object to handle main whiteboard functionality*/
+//Do this after the reset button functionality works
 
 function hideButtons() {
   $('.add').hide();
@@ -64,16 +61,16 @@ function hideContent() {
 }
 
 function showButtons() {
-  $('.add').show();
-  $('.subtract').show();
-  $('.multiply').show();
-  $('.divide').show();
-  $('.reset-button').show();
-  $('.directions').show();
+  $('.add').fadeIn();
+  $('.subtract').fadeIn();
+  $('.multiply').fadeIn();
+  $('.divide').fadeIn();
+  $('.reset-button').fadeIn();
+  $('.directions').fadeIn();
 }
 
 function showContent() {
-  $('#whiteboard').show();
+  $('#whiteboard').fadeIn();
 }
 
 function resetTable() {
@@ -99,41 +96,76 @@ function convertToInt(num) {
 }
 
 function showAnswers() {
-  $('#whiteboard').html('<ul>' + answers + '</ul>');
+  $('#whiteboard').html(answers);
+  i = 0;
+}
+
+function clearAnswersVariable() {
+  answers = '';
 }
 
 function add() {
   number = convertToInt($('.user').val());
   while (i < 101) {
-    answers +=  i + " + " + number + " = " + (i + number) + '<br />';
+    template(i, number, '+');
     i++;
   }
+  i = 0;
   showAnswers();
+clearAnswersVariable();
 }
 
 function subtract() {
   number = convertToInt($('.user').val());
   while (i < 101) {
-    answers += i + ' - ' + number + ' = ' + (i - number) + '<br>';
+    template(i, number, '-');
     i++;
   }
+  i = 0;
   showAnswers();
+  clearAnswersVariable();
 }
 
 function multiply() {
   number = convertToInt($('.user').val());
   while (i < 101) {
-    answers += i + ' x ' + number + ' = ' + (i * number) + ' <br>';
+    template(i, number, 'x');
     i++;
   }
+  i = 0;
   showAnswers();
+  clearAnswersVariable();
 }
 
 function divide() {
   number = convertToInt($('.user').val());
   while (i < 101) {
-    answers += i + ' / ' + number + ' = ' + (i / number) + ' <br>';
+    template(i, number, '/');
     i++;
   }
+  i = 0;
   showAnswers();
+  clearAnswersVariable();
+}
+
+function template( i, number, opString) {
+  var string = '<div class="answer">' + '<p>' + i + " " + opString + " "+ number + " = " + doOperation(i, number, opString) + '</p>' + '</div>';
+  answers += string;
+}
+
+function doOperation(i, number, opString) {
+  switch (opString) {
+    case '+' :
+      return i + number;
+    case '-' :
+      return i - number;
+    case '/' :
+      var divNum = i / number;
+      divNum = +divNum.toFixed(2);
+      return divNum;
+    case 'x' :
+      return i * number;
+    default:
+
+  }
 }
