@@ -8,7 +8,6 @@ $(document).ready(function(){
 
 
 $('.next-step-button').on('click', function() {
-  console.log($('.user').val());
   $('.directions').html('Choose a math operator and watch the magic happen.');
   showButtons();
   return $('.user').val();
@@ -21,26 +20,26 @@ $('.reset-button').on('click', function(){
 $('.add').on('click', function() {
   add();
   changedSelectedButtonColor($('.add'));
-  resetSelectedButtonColor($('.subtract', '.multiply', '.divide'));
+  resetSelectedButtonColor($('.subtract, .multiply, .divide'));
 
 });
 
 $('.subtract').on('click', function(){
   subtract();
   changedSelectedButtonColor($('.subtract'));
-  resetSelectedButtonColor($('.add', '.multiple', '.divide'));
+  resetSelectedButtonColor($('.divide, .add, .multiply'));
 });
 
 $('.multiply').on('click', function(){
   multiply();
   changedSelectedButtonColor($('.multiply'));
-  resetSelectedButtonColor($('.subtract', '.add', '.divide'));
+  resetSelectedButtonColor($('.subtract, .add, .divide'));
 });
 
 $('.divide').on('click', function(){
   divide();
   changedSelectedButtonColor($('.divide'));
-  resetSelectedButtonColor($('.subtract', '.multiply', '.add'));
+  resetSelectedButtonColor($('.subtract, .multiply, .add'));
 });
 
 
@@ -83,8 +82,10 @@ function changedSelectedButtonColor(button) {
   $(button).css({'backgroundColor': '#FD746C','color': 'white'});
 }
 
-function resetSelectedButtonColor(button) {
+function resetSelectedButtonColor(button, buttonTwo, buttonThree) {
   $(button).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
+  $(buttonTwo).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
+  $(buttonThree).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
 }
 
 function clearInputField() {
