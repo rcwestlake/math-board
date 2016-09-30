@@ -22,35 +22,31 @@ $('.reset-button').on('click', function(){
 $('.add').on('click', function() {
   add();
   changedSelectedButtonColor($('.add'));
-  resetSelectedButtonColor($('.subtract'));
-  resetSelectedButtonColor($('.multiply'));
-  resetSelectedButtonColor($('.divide'));
+  resetSelectedButtonColor($('.subtract', '.multiply', '.divide'));
 
 });
 
 $('.subtract').on('click', function(){
   subtract();
   changedSelectedButtonColor($('.subtract'));
-  resetSelectedButtonColor($('.add'));
-  resetSelectedButtonColor($('.multiply'));
-  resetSelectedButtonColor($('.divide'));
+  resetSelectedButtonColor($('.add', '.multiple', '.divide'));
 });
 
 $('.multiply').on('click', function(){
   multiply();
   changedSelectedButtonColor($('.multiply'));
-  resetSelectedButtonColor($('.subtract'));
-  resetSelectedButtonColor($('.add'));
-  resetSelectedButtonColor($('.divide'));
+  resetSelectedButtonColor($('.subtract', '.add', '.divide'));
 });
 
 $('.divide').on('click', function(){
   divide();
   changedSelectedButtonColor($('.divide'));
-  resetSelectedButtonColor($('.subtract'));
-  resetSelectedButtonColor($('.multiply'));
-  resetSelectedButtonColor($('.add'));
+  resetSelectedButtonColor($('.subtract', '.multiply', '.add'));
 });
+
+
+/*Create object to handle main whiteboard functionality*/
+//Do this after the reset button functionality works
 
 function hideButtons() {
   $('.add').hide();
@@ -66,16 +62,16 @@ function hideContent() {
 }
 
 function showButtons() {
-  $('.add').show();
-  $('.subtract').show();
-  $('.multiply').show();
-  $('.divide').show();
-  $('.reset-button').show();
-  $('.directions').show();
+  $('.add').fadeIn();
+  $('.subtract').fadeIn();
+  $('.multiply').fadeIn();
+  $('.divide').fadeIn();
+  $('.reset-button').fadeIn();
+  $('.directions').fadeIn();
 }
 
 function showContent() {
-  $('#whiteboard').show();
+  $('#whiteboard').fadeIn();
 }
 
 function resetTable() {
@@ -155,7 +151,6 @@ function divide() {
 
 function template( i, number, opString) {
   var string = '<div class="answer">' + '<p>' + i + " " + opString + " "+ number + " = " + doOperation(i, number, opString) + '</p>' + '</div>';
-
   answers += string;
 }
 
