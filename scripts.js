@@ -2,7 +2,10 @@ var number = 0;
 var answers = '';
 var i = 1;
 
-hideButtons();
+$document.ready(function(){
+  hideButtons();
+
+});
 
 
 $('.next-step-button').on('click', function() {
