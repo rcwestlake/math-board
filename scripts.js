@@ -54,9 +54,9 @@ function hideButtons() {
   $('.reset-button').hide();
 }
 
-function hideContent() {
+function clearWhiteboard() {
   $('.directions').hide();
-  $('#whiteboard').hide();
+  $('#whiteboard').html('');
 }
 
 function showButtons() {
@@ -75,17 +75,19 @@ function showContent() {
 function resetTable() {
   clearInputField();
   hideButtons();
-  hideContent();
+  clearWhiteboard();
+  resetSelectedButtonColor($('.add, .subtract, .multiply, .divide'));
 }
 
 function changedSelectedButtonColor(button) {
   $(button).css({'backgroundColor': '#FD746C','color': 'white'});
 }
 
-function resetSelectedButtonColor(button, buttonTwo, buttonThree) {
+function resetSelectedButtonColor(button, buttonTwo, buttonThree, buttonFour) {
   $(button).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
   $(buttonTwo).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
   $(buttonThree).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
+  $(buttonFour).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
 }
 
 function clearInputField() {
