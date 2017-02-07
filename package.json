@@ -1,0 +1,21 @@
+{
+  "name": "math-board",
+  "version": "1.0.0",
+  "description": "Simple board to learn math tables",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rcwestlake/math-board.git"
+  },
+  "author": "Ryan C Westlake",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rcwestlake/math-board/issues"
+  },
+  "homepage": "https://github.com/rcwestlake/math-board#readme"
+}
