@@ -79,10 +79,22 @@ const changedSelectedButtonColor = (button) => {
 }
 
 const resetSelectedButtonColor = (button, buttonTwo, buttonThree, buttonFour) => {
-  $(button).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
-  $(buttonTwo).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
-  $(buttonThree).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
-  $(buttonFour).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
+  $(button).css({
+    'backgroundColor': 'white',
+    'border': '3px solid #FD746C',
+    'color': 'black'});
+  $(buttonTwo).css({
+    'backgroundColor': 'white',
+    'border': '3px solid #FD746C',
+    'color': 'black'});
+  $(buttonThree).css({
+    'backgroundColor': 'white',
+    'border': '3px solid #FD746C',
+    'color': 'black'});
+  $(buttonFour).css({
+    'backgroundColor': 'white',
+    'border': '3px solid #FD746C',
+    'color': 'black'});
 }
 
 const clearInputField = () => {
@@ -164,6 +176,6 @@ const doOperation = (i, number, opString) => {
     case 'x' :
       return i * number;
     default:
-
+      console.error('ERROR: in doOperation function')
   }
 }
