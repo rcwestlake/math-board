@@ -1,52 +1,47 @@
-var number = 0;
-var answers = '';
-var i = 1;
+let number = 0;
+let answers = '';
+let i = 1;
 
 $(document).ready(function(){
   hideButtons();
 });
 
-
-$('.next-step-button').on('click', function() {
+$('.next-step-button').on('click', () => {
   $('.directions').html('Choose a math operator and watch the magic happen.');
   showButtons();
   return $('.user').val();
 });
 
-$('.reset-button').on('click', function(){
+$('.reset-button').on('click', () => {
   resetTable();
 });
 
-$('.add').on('click', function() {
+$('.add').on('click', () => {
   add();
   changedSelectedButtonColor($('.add'));
   resetSelectedButtonColor($('.subtract, .multiply, .divide'));
 
 });
 
-$('.subtract').on('click', function(){
+$('.subtract').on('click', () => {
   subtract();
   changedSelectedButtonColor($('.subtract'));
   resetSelectedButtonColor($('.divide, .add, .multiply'));
 });
 
-$('.multiply').on('click', function(){
+$('.multiply').on('click', () => {
   multiply();
   changedSelectedButtonColor($('.multiply'));
   resetSelectedButtonColor($('.subtract, .add, .divide'));
 });
 
-$('.divide').on('click', function(){
+$('.divide').on('click', () => {
   divide();
   changedSelectedButtonColor($('.divide'));
   resetSelectedButtonColor($('.subtract, .multiply, .add'));
 });
 
-
-/*Create object to handle main whiteboard functionality*/
-//Do this after the reset button functionality works
-
-function hideButtons() {
+const hideButtons = () => {
   $('.add').hide();
   $('.subtract').hide();
   $('.multiply').hide();
@@ -54,12 +49,12 @@ function hideButtons() {
   $('.reset-button').hide();
 }
 
-function clearWhiteboard() {
+const clearWhiteboard = () => {
   $('.directions').hide();
   $('#whiteboard').html('');
 }
 
-function showButtons() {
+const showButtons = () => {
   $('.add').fadeIn();
   $('.subtract').fadeIn();
   $('.multiply').fadeIn();
@@ -68,46 +63,46 @@ function showButtons() {
   $('.directions').fadeIn();
 }
 
-function showContent() {
+const showContent = () => {
   $('#whiteboard').fadeIn();
 }
 
-function resetTable() {
+const resetTable = () => {
   clearInputField();
   hideButtons();
   clearWhiteboard();
   resetSelectedButtonColor($('.add, .subtract, .multiply, .divide'));
 }
 
-function changedSelectedButtonColor(button) {
+const changedSelectedButtonColor = (button) => {
   $(button).css({'backgroundColor': '#FD746C','color': 'white'});
 }
 
-function resetSelectedButtonColor(button, buttonTwo, buttonThree, buttonFour) {
+const resetSelectedButtonColor = (button, buttonTwo, buttonThree, buttonFour) => {
   $(button).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
   $(buttonTwo).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
   $(buttonThree).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
   $(buttonFour).css({'backgroundColor': 'white','border': '3px solid #FD746C', 'color': 'black'});
 }
 
-function clearInputField() {
+const clearInputField = () => {
   $('.user').val('');
 }
 
-function convertToInt(num) {
+const convertToInt = (num) => {
   return parseInt(num);
 }
 
-function showAnswers() {
+const showAnswers = () => {
   $('#whiteboard').html(answers);
   i = 0;
 }
 
-function clearAnswersVariable() {
+const clearAnswersVariable = () => {
   answers = '';
 }
 
-function add() {
+const add = () => {
   number = convertToInt($('.user').val());
   while (i < 101) {
     template(i, number, '+');
@@ -118,7 +113,7 @@ function add() {
 clearAnswersVariable();
 }
 
-function subtract() {
+const subtract = () => {
   number = convertToInt($('.user').val());
   while (i < 101) {
     template(i, number, '-');
@@ -129,7 +124,7 @@ function subtract() {
   clearAnswersVariable();
 }
 
-function multiply() {
+const multiply = () => {
   number = convertToInt($('.user').val());
   while (i < 101) {
     template(i, number, 'x');
@@ -140,7 +135,7 @@ function multiply() {
   clearAnswersVariable();
 }
 
-function divide() {
+const divide = () => {
   number = convertToInt($('.user').val());
   while (i < 101) {
     template(i, number, '/');
@@ -151,12 +146,12 @@ function divide() {
   clearAnswersVariable();
 }
 
-function template( i, number, opString) {
+const template = ( i, number, opString) => {
   var string = '<div class="answer">' + '<p>' + i + " " + opString + " "+ number + " = " + doOperation(i, number, opString) + '</p>' + '</div>';
   answers += string;
 }
 
-function doOperation(i, number, opString) {
+const doOperation = (i, number, opString) => {
   switch (opString) {
     case '+' :
       return i + number;
